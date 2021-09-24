@@ -5,9 +5,9 @@ export const Avatar = styled(motion.img)`
   width: 220px;
   height: 220px;
 
-  border-radius: 30%;
-  margin-bottom: 24px;
+  border-radius: 50%;
 
+  box-shadow: 4px 4px 10px 0px black;
   background-color: ${({ theme }) => theme.colors.tertiary};
 
   @media screen and (min-width: 1000px) {
@@ -18,70 +18,59 @@ export const Avatar = styled(motion.img)`
   }
 `
 
-export const Sidebar = styled(motion.div)`
-  position: fixed;
-  top: 10vh;
-  left: 0px;
-  z-index: 2;
+const Style = styled.section`
+  background-color: ${({ theme }) => theme.colors.secondary};
 
-  width: 72px;
-  height: 80vh;
-  border-radius: 0 48px 48px 0;
+  article {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 
-  backdrop-filter: blur(1.5px);
-  -webkit-backdrop-filter: blur(1.5px);
-  background: rgba(103, 218, 249, 0.4);
-  border: 1px solid rgba(103, 218, 249, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(103, 218, 249, 0.37);
-`
-
-export const SliderItem = styled.div`
-  width: min(600px, 80vw);
-
-  .title {
     width: 100%;
-    text-align: center;
-    font-size: ${({ theme }) => theme.font.big};
-  }
+    height: 80vh;
 
-  #profile {
-    p {
-      text-align: center;
+    background-color: ${({ theme }) => theme.colors.quaternary};
+
+    * + * {
       margin-top: 24px;
     }
 
-    @media screen and (min-width: 1000px) {
-      display: grid;
-      align-items: space-between;
-      justify-content: space-between;
-      grid:
-        'avatar h1'
-        'avatar h2'
-        'avatar p' / 1fr 2fr;
+    h1 {
+      font-size: ${({ theme }) => theme.font.giant};
+    }
 
-      h1 {
-        grid-area: h1;
-      }
+    h2 {
+      margin-top: 0px;
+      font-size: ${({ theme }) => theme.font.big};
+    }
 
-      h2 {
-        grid-area: h2;
-      }
+    p {
+      text-align: center;
+      font-size: ${({ theme }) => theme.font.medium};
+    }
 
-      p {
-        grid-area: p;
+    svg {
+      margin-right: 8px;
+    }
+
+    #github {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 8px;
+      border-radius: 8px;
+
+      transition: all 1s ease-in-out;
+      box-shadow: 4px 8px 10px 0px black;
+      color: ${({ theme }) => theme.colors.secondary};
+      background-color: ${({ theme }) => theme.colors.tertiary};
+
+      &:hover {
+        transform: scale(1.1);
       }
     }
-  }
-`
-
-const Style = styled.section`
-  #background {
-    position: absolute;
-    top: 0;
-    z-index: 0;
-
-    width: 100vw;
-    height: 100vh;
   }
 `
 

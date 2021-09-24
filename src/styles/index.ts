@@ -34,18 +34,6 @@ export default createGlobalStyle`
         list-style-type: none;
       }
 
-      h1 {
-        font-size: ${({ theme }) => theme.font.medium};
-      }
-
-      h2 {
-        font-size: ${({ theme }) => theme.font.small};
-      }
-
-      p {
-        font-size: ${({ theme }) => theme.font.tiny};
-      }
-
       button {
         cursor: pointer;
         
