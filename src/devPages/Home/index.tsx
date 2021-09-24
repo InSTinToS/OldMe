@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 import Head from 'next/head'
 import { NextPage } from 'next'
@@ -7,7 +7,7 @@ import Style from './styles'
 import Profile from './Profile'
 import Skills from './Skills'
 import { motion, useTransform, useViewportScroll } from 'framer-motion'
-import { t } from 'hoist-non-react-statics/node_modules/@types/react'
+
 import Footer from './Footer'
 
 interface HomeProps {}
