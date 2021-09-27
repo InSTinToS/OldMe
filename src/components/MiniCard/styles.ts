@@ -36,37 +36,30 @@ const Style = styled.div`
     font-size: ${({ theme }) => theme.font.small};
   }
 
-  .greenBar {
+  .bar {
     grid-area: bar;
 
     height: 8px;
-    width: 100px;
     margin-left: 24px;
     border-radius: 8px;
 
-    background-color: green;
-  }
+    &#green {
+      width: 100px;
 
-  .yellowBar {
-    grid-area: bar;
+      background-color: green;
+    }
 
-    height: 8px;
-    width: 50px;
-    margin-left: 24px;
-    border-radius: 8px;
+    &#yellow {
+      width: 50px;
 
-    background-color: yellow;
-  }
+      background-color: yellow;
+    }
 
-  .redBar {
-    grid-area: bar;
+    &#red {
+      width: 25px;
 
-    height: 8px;
-    width: 25px;
-    margin-left: 24px;
-    border-radius: 8px;
-
-    background-color: red;
+      background-color: red;
+    }
   }
 `
 

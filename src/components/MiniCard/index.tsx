@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Style from './styles'
 
 import Perspective from 'components/Perspective'
@@ -20,9 +20,9 @@ const MiniCard = ({ image, title, color, link }: MiniCardProps) => {
 
         <span className='title'>{title}</span>
 
-        {color === 'red' && <div className='redBar' />}
-        {color === 'green' && <div className='greenBar' />}
-        {color === 'yellow' && <div className='yellowBar' />}
+        {color === 'red' && <div className='bar' id='redBar' />}
+        {color === 'green' && <div className='bar' id='greenBar' />}
+        {color === 'yellow' && <div className='bar' id='yellowBar' />}
       </Style>
     </Perspective>
   )

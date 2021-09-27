@@ -1,8 +1,12 @@
 import Style from './styles'
+import { forwardRef } from 'react'
+
 import react from 'assets/skills/react.png'
+
 import MiniCard, { MiniCardProps } from 'components/MiniCard'
-import { useInView } from 'react-intersection-observer'
+
 import { motion, Variants } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
 interface SkillsProps {}
 
@@ -78,17 +82,17 @@ const liAnimation: Variants = {
   }
 }
 
-const Skills = ({}: SkillsProps) => {
-  const [ref, inView] = useInView()
+const Skills = forwardRef<any, SkillsProps>(({}, ref) => {
+  const [viewRef, inView] = useInView()
 
   return (
-    <Style>
+    <Style ref={ref}>
       <h2>Competências</h2>
 
       <ul>
         {cards.map(({ image, title, color, link }, index) => (
           <motion.li
-            ref={ref}
+            ref={viewRef}
             key={index}
             variants={liAnimation}
             animate={inView ? 'visible' : 'hidden'}
@@ -99,6 +103,6 @@ const Skills = ({}: SkillsProps) => {
       </ul>
     </Style>
   )
-}
+})
 
 export default Skills

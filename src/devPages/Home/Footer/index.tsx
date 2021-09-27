@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import Style from './styles'
 
 interface FooterProps {}
 
-const Footer = ({}: FooterProps) => {
-  return <Style />
-}
+const Footer = forwardRef<any, FooterProps>(({}, ref) => (
+  <Style ref={ref}>
+    <h2>Footer</h2>
+  </Style>
+))
 
 export default Footer

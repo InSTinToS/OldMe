@@ -1,43 +1,44 @@
-import { motion, useMotionValue, useTransform } from 'framer-motion'
-
-import useWindowDimensions from 'hooks/useWindowDimensions'
 import {
-  useEffect,
-  useCallback,
-  ReactNode,
   MouseEventHandler,
+  ReactNode,
+  useCallback,
+  useEffect,
   useRef
 } from 'react'
+
+import useWindowDimensions from 'hooks/useWindowDimensions'
+
+import { motion, useMotionValue, useTransform } from 'framer-motion'
 
 interface PerspectiveProps {
   degree?: number
   children: ReactNode
-  onlyInChildren?: boolean
+  onlyAroundChildren?: boolean
 }
 
 const Perspective = ({
   children,
   degree = 22,
-  onlyInChildren = false
+  onlyAroundChildren = false
 }: PerspectiveProps) => {
   const { innerHeight, innerWidth } = useWindowDimensions()
 
   const perspectiveRef = useRef<HTMLDivElement>(null)
 
-  const childrenWidth = perspectiveRef.current?.clientWidth
-  const childrenHeight = perspectiveRef.current?.clientHeight
-
   const x = useMotionValue(0)
   const y = useMotionValue(0)
 
+  const childrenWidth = perspectiveRef.current?.clientWidth
+  const childrenHeight = perspectiveRef.current?.clientHeight
+
   const rotateY = useTransform(
     x,
-    [0, onlyInChildren ? childrenWidth : innerWidth],
+    [0, onlyAroundChildren ? childrenWidth : innerWidth],
     [-degree, degree]
   )
   const rotateX = useTransform(
     y,
-    [0, onlyInChildren ? childrenHeight : innerHeight],
+    [0, onlyAroundChildren ? childrenHeight : innerHeight],
     [degree, -degree]
   )
 
@@ -64,10 +65,13 @@ const Perspective = ({
   )
 
   useEffect(() => {
-    !onlyInChildren && window.addEventListener('mousemove', onMouseMove)
+    !onlyAroundChildren && window.addEventListener('mousemove', onMouseMove)
 
-    return () => window.removeEventListener('mousemove', onMouseMove)
-  }, [onMouseMove, onlyInChildren])
+    return () => {
+      !onlyAroundChildren &&
+        window.removeEventListener('mousemove', onMouseMove)
+    }
+  }, [onMouseMove, onlyAroundChildren])
 
   return (
     <motion.div

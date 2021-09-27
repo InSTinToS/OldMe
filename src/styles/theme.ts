@@ -17,6 +17,12 @@ const theme = {
       background: 'rgba(0, 0, 0, 0.4)',
       border: '1px solid rgba(0, 0, 0, 0.2)',
       shadow: ' 0 8px 20px 0 rgba(0, 0, 0, 0.5)'
+    },
+    tertiary: {
+      backdropFilter: 'blur(1.5px)',
+      background: 'rgba(0, 0, 0, 0.8)',
+      border: '1px solid rgba(0, 0, 0, 0.7)',
+      shadow: ' 0 8px 20px 0 rgba(0, 0, 0, 0.5)'
     }
   },
   font: {

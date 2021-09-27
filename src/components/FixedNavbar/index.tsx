@@ -1,7 +1,9 @@
 import React, {
+  forwardRef,
   MutableRefObject,
   ReactNode,
   useEffect,
+  useImperativeHandle,
   useRef,
   useState
 } from 'react'
@@ -14,42 +16,57 @@ import Style from './styles'
   rapidamente o scroll
 */
 
+export interface ForwardedByFixedNavbar {
+  setFixed: () => void
+  getTopDistance: () => number
+}
+
 interface FixedNavbarProps {
   children: ReactNode
   positionRef: MutableRefObject<HTMLElement>
 }
 
-const FixedNavbar = ({ positionRef, children }: FixedNavbarProps) => {
-  const [topDistanceFromViewport, setDistance] = useState(0)
+const FixedNavbar = forwardRef<any, FixedNavbarProps>(
+  ({ positionRef, children }, ref) => {
+    const [topDistanceFromViewport, setDistance] = useState(0)
 
-  const navbarRef = useRef<HTMLElement>(null)
+    const navbarRef = useRef<HTMLElement>(null)
 
-  const top =
-    topDistanceFromViewport > navbarRef.current?.clientHeight
-      ? topDistanceFromViewport - navbarRef.current?.clientHeight
-      : 0
+    const top =
+      topDistanceFromViewport > navbarRef.current?.clientHeight
+        ? topDistanceFromViewport - navbarRef.current?.clientHeight
+        : 0
 
-  const onWindowScroll = () => {
-    setDistance(positionRef.current?.getBoundingClientRect().y || 0)
-  }
+    const getTopDistance = () => topDistanceFromViewport
 
-  useEffect(() => {
-    window.addEventListener('scroll', onWindowScroll)
-
-    return () => {
-      window.removeEventListener('scroll', onWindowScroll)
+    const setFixed = () => {
+      setDistance(0)
     }
-  })
 
-  useEffect(() => {
-    onWindowScroll()
-  }, [onWindowScroll])
+    useImperativeHandle(ref, () => ({ setFixed, getTopDistance }))
 
-  return (
-    <Style style={{ top }} ref={navbarRef} className='FixedNavbar'>
-      {children}
-    </Style>
-  )
-}
+    const onWindowScroll = () => {
+      setDistance(positionRef.current?.getBoundingClientRect().y || 0)
+    }
+
+    useEffect(() => {
+      window.addEventListener('scroll', onWindowScroll)
+
+      return () => {
+        window.removeEventListener('scroll', onWindowScroll)
+      }
+    })
+
+    useEffect(() => {
+      onWindowScroll()
+    }, [onWindowScroll])
+
+    return (
+      <Style style={{ top }} ref={navbarRef} className='FixedNavbar'>
+        {children}
+      </Style>
+    )
+  }
+)
 
 export default FixedNavbar

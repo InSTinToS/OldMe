@@ -7,7 +7,7 @@ export const Avatar = styled(motion.img)`
 
   border-radius: 50%;
 
-  box-shadow: 4px 4px 10px 0px black;
+  box-shadow: ${({ theme }) => theme.glass.tertiary.shadow};
   background-color: ${({ theme }) => theme.colors.tertiary};
 
   @media screen and (min-width: 1000px) {
@@ -19,7 +19,7 @@ export const Avatar = styled(motion.img)`
 `
 
 const Style = styled.section`
-  background-color: ${({ theme }) => theme.colors.secondary};
+  height: 80vh;
 
   article {
     display: flex;
@@ -52,24 +52,6 @@ const Style = styled.section`
 
     svg {
       margin-right: 8px;
-    }
-
-    #github {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 8px;
-      border-radius: 8px;
-
-      transition: all 1s ease-in-out;
-      box-shadow: 4px 8px 10px 0px black;
-      color: ${({ theme }) => theme.colors.secondary};
-      background-color: ${({ theme }) => theme.colors.tertiary};
-
-      &:hover {
-        transform: scale(1.1);
-      }
     }
   }
 `

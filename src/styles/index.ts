@@ -17,6 +17,7 @@ export default createGlobalStyle`
       overflow-x: hidden;
       
       color: ${({ theme }) => theme.colors.tertiary};
+      background-color: ${({ theme }) => theme.colors.quaternary};
 
       * {
         font-weight: normal
