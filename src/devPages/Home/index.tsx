@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 
 import Head from 'next/head'
 import { NextPage } from 'next'
@@ -7,21 +7,20 @@ import Style from './styles'
 import Profile from './Profile'
 import Skills from './Skills'
 import { motion, useTransform, useViewportScroll } from 'framer-motion'
-
+import Navbar from './Navbar'
 import Footer from './Footer'
+import Resume from './Resume'
+import Experience from './Experience'
 
 interface HomeProps {}
 
 const Home: NextPage<HomeProps> = () => {
-  const profileRef = useRef<HTMLDivElement>(null)
+  const aboveParallaxRef = useRef<HTMLDivElement>(null)
 
   const { scrollY } = useViewportScroll()
 
-  const y1 = useTransform(scrollY, [0, 300], [0, 100])
-  const y2 = useTransform(scrollY, [0, 300], [0, -300])
-  const y3 = useTransform(scrollY, [0, 600], [0, -600])
-
-  useEffect(() => console.log(scrollY))
+  const belowY = useTransform(scrollY, [0, 300], [0, 0])
+  const aboveY = useTransform(scrollY, [0, 373], [0, -373])
 
   return (
     <Style>
@@ -29,15 +28,19 @@ const Home: NextPage<HomeProps> = () => {
         <title>Home page</title>
       </Head>
 
-      <motion.div style={{ y: y1 }} ref={profileRef}>
+      <Navbar positionRef={aboveParallaxRef} />
+
+      <motion.div style={{ y: belowY }}>
         <Profile />
       </motion.div>
 
-      <motion.div style={{ y: y2 }}>
+      <motion.div style={{ y: aboveY }} ref={aboveParallaxRef}>
         <Skills />
-      </motion.div>
 
-      <motion.div style={{ y: y3 }}>
+        <Resume />
+
+        <Experience />
+
         <Footer />
       </motion.div>
     </Style>

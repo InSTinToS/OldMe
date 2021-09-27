@@ -7,15 +7,14 @@ const Style = styled.section`
   align-items: center;
   justify-content: center;
 
-  padding: 48px;
   min-height: 100vh;
-  padding-bottom: calc(30vh + 24px);
+  padding: 88px 48px 48px 48px;
 
   background-color: ${({ theme }) => theme.colors.secondary};
 
   h2 {
     position: absolute;
-    top: 24px;
+    top: 88px;
 
     font-size: ${({ theme }) => theme.font.big};
   }

@@ -88,10 +88,10 @@ const Skills = ({}: SkillsProps) => {
       <ul>
         {cards.map(({ image, title, color, link }, index) => (
           <motion.li
-            animate={inView ? 'visible' : 'hidden'}
-            variants={liAnimation}
             ref={ref}
             key={index}
+            variants={liAnimation}
+            animate={inView ? 'visible' : 'hidden'}
           >
             <MiniCard link={link} image={image} title={title} color={color} />
           </motion.li>
