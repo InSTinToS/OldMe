@@ -1,9 +1,9 @@
 import React, {
+  MutableRefObject,
   ReactNode,
   useEffect,
-  useState,
-  MutableRefObject,
-  useRef
+  useRef,
+  useState
 } from 'react'
 import Style from './styles'
 

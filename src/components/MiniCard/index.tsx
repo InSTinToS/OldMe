@@ -1,7 +1,7 @@
-import Perspective from 'components/Perspective'
-import { useRouter } from 'next/dist/client/router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Style from './styles'
+
+import Perspective from 'components/Perspective'
 
 export interface MiniCardProps {
   link: string
