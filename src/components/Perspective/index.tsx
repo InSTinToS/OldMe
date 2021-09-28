@@ -6,6 +6,8 @@ import {
   useRef
 } from 'react'
 
+import mobileRegex from 'utils/mobileRegex'
+
 import useWindowDimensions from 'hooks/useWindowDimensions'
 
 import { motion, useMotionValue, useTransform } from 'framer-motion'
@@ -23,6 +25,7 @@ const Perspective = ({
 }: PerspectiveProps) => {
   const { innerHeight, innerWidth } = useWindowDimensions()
 
+  const isMobile = useRef<boolean>(null)
   const perspectiveRef = useRef<HTMLDivElement>(null)
 
   const x = useMotionValue(0)
@@ -65,6 +68,8 @@ const Perspective = ({
   )
 
   useEffect(() => {
+    isMobile.current = mobileRegex.test(window.navigator.userAgent)
+
     !onlyAroundChildren && window.addEventListener('mousemove', onMouseMove)
 
     return () => {
@@ -79,7 +84,10 @@ const Perspective = ({
       className='Perspective'
       onMouseMove={onMouseOver}
       onMouseLeave={onMouseLeave}
-      style={{ rotateX, rotateY }}
+      style={{
+        rotateX: isMobile.current ? 0 : rotateX,
+        rotateY: isMobile.current ? 0 : rotateY
+      }}
     >
       {children}
     </motion.div>

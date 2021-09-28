@@ -29,7 +29,7 @@ const theme = {
     giant: 'clamp(3rem, 3.3333rem + 2.0833vw, 5rem);',
     big: 'clamp(2rem, 2.3333rem + 2.0833vw, 4rem);',
     medium: 'clamp(1.6rem, 1.3333rem + 2.0833vw, 2rem);',
-    small: 'clamp(1rem, 0.3333rem + 2.0833vw, 2rem);',
+    small: 'clamp(1.5rem, 0.3333rem + 2.0833vw, 1.8rem);',
     tiny: 'clamp(1rem, 0.6667rem + 1.0417vw, 1.5rem);'
   }
 }

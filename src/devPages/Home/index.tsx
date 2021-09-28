@@ -65,11 +65,11 @@ const Home: NextPage<HomeProps> = () => {
       </motion.div>
 
       <motion.div id='above' style={{ y: aboveY }} ref={aboveParallaxRef}>
+        <Experience ref={experienceRef} />
+
         <Skills ref={skillsRef} />
 
         <Resume ref={resumeRef} />
-
-        <Experience ref={experienceRef} />
       </motion.div>
     </Style>
   )

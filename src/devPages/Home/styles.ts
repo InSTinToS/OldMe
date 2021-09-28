@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const Style = styled(motion.main)`
   height: 0px;
+  min-width: 320px;
 
   section {
     display: flex;

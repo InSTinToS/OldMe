@@ -7,6 +7,7 @@ const Style = styled.a`
 
   width: 30vw;
   padding: 8px;
+  min-width: 164px;
   border-radius: 8px;
   transition: all 1s ease-in-out;
 

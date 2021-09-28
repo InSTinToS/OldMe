@@ -5,7 +5,9 @@ const Style = styled.ul`
   display: flex;
   justify-content: stretch;
   align-items: center;
+
   height: 67px;
+  min-width: 320px;
 
   border: ${({ theme }) => theme.glass.tertiary.border};
   box-shadow: ${({ theme }) => theme.glass.tertiary.shadow};

@@ -10,11 +10,11 @@ const Style = styled.div`
     'avatar bar' 50% / 72px auto;
 
   margin: 24px;
-  padding: 24px;
-  cursor: pointer;
-  width: 320px;
+  padding: 12px;
   height: 122px;
+  cursor: pointer;
   border-radius: 8px;
+  width: clamp(250px, 70vw, 320px);
 
   border: ${({ theme }) => theme.glass.secondary.border};
   box-shadow: ${({ theme }) => theme.glass.secondary.shadow};

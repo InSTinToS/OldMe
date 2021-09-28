@@ -5,7 +5,7 @@ interface ExperienceProps {}
 
 const Experience = forwardRef<any, ExperienceProps>(({}, ref) => (
   <Style ref={ref}>
-    <h2>Experiências</h2>
+    <h2>Experiência</h2>
   </Style>
 ))
 

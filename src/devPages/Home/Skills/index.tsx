@@ -32,17 +32,17 @@ const Skills = forwardRef<any, SkillsProps>(({}, ref) => {
     <Style ref={ref}>
       <h2>Tecnologias</h2>
 
-      <motion.ul
-        ref={viewRef}
-        variants={liAnimation}
-        animate={inView ? 'visible' : 'hidden'}
-      >
+      <ul ref={viewRef}>
         {cards.map(({ image, title, color, link }, index) => (
-          <motion.li key={index}>
+          <motion.li
+            key={index}
+            variants={liAnimation}
+            animate={inView ? 'visible' : 'hidden'}
+          >
             <MiniCard link={link} image={image} title={title} color={color} />
           </motion.li>
         ))}
-      </motion.ul>
+      </ul>
     </Style>
   )
 })
