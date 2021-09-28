@@ -1,71 +1,14 @@
 import Style from './styles'
 import { forwardRef } from 'react'
 
-import react from 'assets/skills/react.png'
+import cards from 'utils/getCards'
 
-import MiniCard, { MiniCardProps } from 'components/MiniCard'
+import MiniCard from 'components/MiniCard'
 
 import { motion, Variants } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 interface SkillsProps {}
-
-const cards: MiniCardProps[] = [
-  {
-    image: react,
-    title: 'React',
-    color: 'green',
-    link: 'https://pt-br.reactjs.org/'
-  },
-  {
-    image: react,
-    title: 'React',
-    color: 'green',
-    link: 'https://pt-br.reactjs.org/'
-  },
-  {
-    image: react,
-    title: 'React',
-    color: 'green',
-    link: 'https://pt-br.reactjs.org/'
-  },
-  {
-    image: react,
-    title: 'React',
-    color: 'green',
-    link: 'https://pt-br.reactjs.org/'
-  },
-  {
-    image: react,
-    title: 'React',
-    color: 'green',
-    link: 'https://pt-br.reactjs.org/'
-  },
-  {
-    image: react,
-    title: 'React',
-    color: 'green',
-    link: 'https://pt-br.reactjs.org/'
-  },
-  {
-    image: react,
-    title: 'React',
-    color: 'green',
-    link: 'https://pt-br.reactjs.org/'
-  },
-  {
-    image: react,
-    title: 'React',
-    color: 'yellow',
-    link: 'https://pt-br.reactjs.org/'
-  },
-  {
-    image: react,
-    title: 'React',
-    color: 'red',
-    link: 'https://pt-br.reactjs.org/'
-  }
-]
 
 const liAnimation: Variants = {
   visible: {
@@ -87,20 +30,19 @@ const Skills = forwardRef<any, SkillsProps>(({}, ref) => {
 
   return (
     <Style ref={ref}>
-      <h2>Competências</h2>
+      <h2>Tecnologias</h2>
 
-      <ul>
+      <motion.ul
+        ref={viewRef}
+        variants={liAnimation}
+        animate={inView ? 'visible' : 'hidden'}
+      >
         {cards.map(({ image, title, color, link }, index) => (
-          <motion.li
-            ref={viewRef}
-            key={index}
-            variants={liAnimation}
-            animate={inView ? 'visible' : 'hidden'}
-          >
+          <motion.li key={index}>
             <MiniCard link={link} image={image} title={title} color={color} />
           </motion.li>
         ))}
-      </ul>
+      </motion.ul>
     </Style>
   )
 })

@@ -22,12 +22,10 @@ const Profile = forwardRef<any, ProfileProps>(({}, ref) => (
       <p>
         São Paulo - Brasil <br />
         Engenharia da computação <br />
-        Universidade Anhembi Morumbi (5 Semestre) <br />
+        Universidade Anhembi Morumbi (6° Semestre) <br />
       </p>
 
-      <Perspective>
-        <Github />
-      </Perspective>
+      <Github />
     </article>
   </Style>
 ))

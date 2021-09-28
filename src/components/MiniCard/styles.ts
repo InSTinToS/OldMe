@@ -12,6 +12,8 @@ const Style = styled.div`
   margin: 24px;
   padding: 24px;
   cursor: pointer;
+  width: 320px;
+  height: 122px;
   border-radius: 8px;
 
   border: ${({ theme }) => theme.glass.secondary.border};

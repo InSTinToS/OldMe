@@ -8,7 +8,7 @@ const Style = styled(motion.main)`
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 
     width: 100vw;
     min-width: 320px;

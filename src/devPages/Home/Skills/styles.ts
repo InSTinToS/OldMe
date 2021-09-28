@@ -14,6 +14,7 @@ const Style = styled.section`
     justify-content: space-evenly;
 
     width: 100%;
+    padding-top: 32px;
   }
 `
 

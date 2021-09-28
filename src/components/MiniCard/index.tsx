@@ -20,9 +20,9 @@ const MiniCard = ({ image, title, color, link }: MiniCardProps) => {
 
         <span className='title'>{title}</span>
 
-        {color === 'red' && <div className='bar' id='redBar' />}
-        {color === 'green' && <div className='bar' id='greenBar' />}
-        {color === 'yellow' && <div className='bar' id='yellowBar' />}
+        {color === 'red' && <div className='bar' id='red' />}
+        {color === 'green' && <div className='bar' id='green' />}
+        {color === 'yellow' && <div className='bar' id='yellow' />}
       </Style>
     </Perspective>
   )

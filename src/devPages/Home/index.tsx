@@ -70,8 +70,6 @@ const Home: NextPage<HomeProps> = () => {
         <Resume ref={resumeRef} />
 
         <Experience ref={experienceRef} />
-
-        <Footer />
       </motion.div>
     </Style>
   )
