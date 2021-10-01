@@ -19,6 +19,7 @@ interface NavbarProps {
   positionRef: MutableRefObject<HTMLElement>
   items?: {
     label: string
+    icon?: JSX.Element
     ref?: MutableRefObject<HTMLElement>
   }[]
 }
@@ -49,7 +50,7 @@ const Navbar = forwardRef<any, NavbarProps>(
     return (
       <FixedNavbar ref={fixedNavbarRef} positionRef={positionRef}>
         <Style>
-          {items.map(({ label, ref }, index) => (
+          {items.map(({ label, ref, icon }, index) => (
             <li key={index} onClick={() => onLiClick(ref)}>
               <motion.div
                 whileHover={{
@@ -61,7 +62,9 @@ const Navbar = forwardRef<any, NavbarProps>(
                   }
                 }}
               >
-                {label}
+                {icon && icon}
+
+                <span>{label}</span>
               </motion.div>
             </li>
           ))}

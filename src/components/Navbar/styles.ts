@@ -17,22 +17,47 @@ const Style = styled.ul`
   li {
     width: 100%;
     height: 100%;
+    padding: 8px;
     cursor: pointer;
     user-select: none;
 
     div {
       display: flex;
-      justify-content: center;
       align-items: center;
+      flex-direction: column;
+      justify-content: center;
 
       width: 100%;
       height: 100%;
       cursor: pointer;
       user-select: none;
+
+      span {
+        display: none;
+      }
+
+      .Icon {
+        width: 24px;
+        margin-right: 8px;
+      }
     }
 
     &:hover {
       background-color: ${({ theme }) => darken(0.1, theme.colors.quaternary)};
+    }
+  }
+
+  @media screen and (min-width: 500px) {
+    li div {
+      span {
+        display: inline;
+      }
+    }
+  }
+
+  @media screen and (min-width: 700px) {
+    li div {
+      flex-direction: row;
     }
   }
 `

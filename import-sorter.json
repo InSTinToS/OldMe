@@ -22,63 +22,68 @@
           "disableSort": true
         },
         {
-          "regex": "^./|^../",
+          "regex": "^next",
           "orderLevel": 2,
           "disableSort": true
         },
         {
-          "regex": "^styles",
+          "regex": "^./|^../",
           "orderLevel": 3,
           "disableSort": true
         },
         {
-          "regex": "^routes",
+          "regex": "^styles",
           "orderLevel": 4,
           "disableSort": true
         },
         {
-          "regex": "^pages",
+          "regex": "^routes",
           "orderLevel": 5,
           "disableSort": true
         },
         {
-          "regex": "^locales",
+          "regex": "^pages",
           "orderLevel": 6,
           "disableSort": true
         },
         {
-          "regex": "^utils",
+          "regex": "^locales",
           "orderLevel": 7,
           "disableSort": true
         },
         {
-          "regex": "^services/api",
+          "regex": "^utils",
           "orderLevel": 8,
           "disableSort": true
         },
         {
-          "regex": "^store",
+          "regex": "^services/api",
           "orderLevel": 9,
           "disableSort": true
         },
         {
-          "regex": "^hooks",
+          "regex": "^store",
           "orderLevel": 10,
           "disableSort": true
         },
         {
-          "regex": "^assets",
+          "regex": "^hooks",
           "orderLevel": 11,
           "disableSort": true
         },
         {
-          "regex": "^components",
+          "regex": "^assets",
           "orderLevel": 12,
           "disableSort": true
         },
         {
-          "regex": "^types",
+          "regex": "^components",
           "orderLevel": 13,
+          "disableSort": true
+        },
+        {
+          "regex": "^types",
+          "orderLevel": 14,
           "disableSort": true
         }
       ]
