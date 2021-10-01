@@ -1,14 +1,15 @@
 import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
+  DocumentContext,
   DocumentInitialProps,
-  DocumentContext
+  Head,
+  Html,
+  Main,
+  NextScript
 } from 'next/document'
 
-import { ServerStyleSheet } from 'styled-components'
 import favicon from '../../public/favicon.ico'
+
+import { ServerStyleSheet } from 'styled-components'
 
 class MyDocument extends Document {
   static async getInitialProps(
