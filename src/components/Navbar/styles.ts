@@ -38,6 +38,7 @@ const Style = styled.ul`
 
       .Icon {
         width: 24px;
+        height: 24px;
         margin-right: 8px;
       }
     }

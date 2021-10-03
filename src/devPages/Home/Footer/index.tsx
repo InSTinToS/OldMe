@@ -32,6 +32,13 @@ const Footer = forwardRef<any, FooterProps>(({}, ref) => (
         www.flaticon.com
       </a>
     </div>
+
+    <div>
+      Music by{' '}
+      <a href='https://www.youtube.com/watch?v=BXoQoisE9QA&ab_channel=LaloProductionsBeatz'>
+        LaloProductionsBeatz
+      </a>
+    </div>
   </Style>
 ))
 

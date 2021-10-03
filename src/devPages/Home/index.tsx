@@ -24,6 +24,7 @@ interface HomeProps {}
 
 const Home: NextPage<HomeProps> = () => {
   const [isFixed, setisFixed] = useState(false)
+  const sourceRef = useRef<HTMLSourceElement>(null)
 
   const aboveParallaxRef = useRef<HTMLDivElement>(null)
   const experienceRef = useRef<HTMLDivElement>(null)
@@ -98,13 +99,14 @@ const Home: NextPage<HomeProps> = () => {
         loop
         controls
         autoPlay
+        id='audio-element'
         animate={{
           top: isFixed ? 'auto' : 24,
           transition: { duration: 2 },
           bottom: isFixed ? 24 : 'auto'
         }}
       >
-        <source src='audios/beat.mp3' type='audio/mp3' />
+        <source ref={sourceRef} src='audios/beat.mp3' type='audio/mp3' />
         Your browser does not support the audio tag.
       </motion.audio>
     </Style>
