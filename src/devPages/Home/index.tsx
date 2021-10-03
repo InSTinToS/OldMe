@@ -23,7 +23,7 @@ import { motion, useTransform, useViewportScroll } from 'framer-motion'
 interface HomeProps {}
 
 const Home: NextPage<HomeProps> = () => {
-  const [topDistance, setTopDistance] = useState(0)
+  const [isFixed, setisFixed] = useState(false)
 
   const aboveParallaxRef = useRef<HTMLDivElement>(null)
   const experienceRef = useRef<HTMLDivElement>(null)
@@ -71,7 +71,13 @@ const Home: NextPage<HomeProps> = () => {
         items={navbarItems}
         yDistanceOffset={373}
         positionRef={aboveParallaxRef}
-        getTopDistance={distance => setTopDistance(distance)}
+        getTopDistance={distance => {
+          if (distance <= 102 && !isFixed) {
+            setisFixed(true)
+          } else if (distance > 102 && isFixed) {
+            setisFixed(false)
+          }
+        }}
       />
 
       <motion.div id='below' style={{ y: belowY }}>
@@ -93,9 +99,9 @@ const Home: NextPage<HomeProps> = () => {
         controls
         autoPlay
         animate={{
-          top: topDistance < 102 ? 'auto' : 24,
-          bottom: topDistance < 102 ? 24 : 'auto',
-          transition: { duration: 2 }
+          top: isFixed ? 'auto' : 24,
+          transition: { duration: 2 },
+          bottom: isFixed ? 24 : 'auto'
         }}
       >
         <source src='audios/beat.mp3' type='audio/mp3' />
