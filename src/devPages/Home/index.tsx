@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Style from './styles'
 
 import { NextPage } from 'next'
@@ -23,6 +23,8 @@ import { motion, useTransform, useViewportScroll } from 'framer-motion'
 interface HomeProps {}
 
 const Home: NextPage<HomeProps> = () => {
+  const [topDistance, setTopDistance] = useState(0)
+
   const aboveParallaxRef = useRef<HTMLDivElement>(null)
   const experienceRef = useRef<HTMLDivElement>(null)
   const navbarRef = useRef<ForwardedByNavbar>(null)
@@ -69,6 +71,7 @@ const Home: NextPage<HomeProps> = () => {
         items={navbarItems}
         yDistanceOffset={373}
         positionRef={aboveParallaxRef}
+        getTopDistance={distance => setTopDistance(distance)}
       />
 
       <motion.div id='below' style={{ y: belowY }}>
@@ -84,6 +87,20 @@ const Home: NextPage<HomeProps> = () => {
 
         <Footer />
       </motion.div>
+
+      <motion.audio
+        loop
+        controls
+        autoPlay
+        animate={{
+          top: topDistance < 102 ? 'auto' : 24,
+          bottom: topDistance < 102 ? 24 : 'auto',
+          transition: { duration: 2 }
+        }}
+      >
+        <source src='audios/beat.mp3' type='audio/mp3' />
+        Your browser does not support the audio tag.
+      </motion.audio>
     </Style>
   )
 }

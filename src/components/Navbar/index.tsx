@@ -1,8 +1,10 @@
 import React, {
   forwardRef,
   MutableRefObject,
+  useEffect,
   useImperativeHandle,
-  useRef
+  useRef,
+  useState
 } from 'react'
 import Style from './styles'
 
@@ -17,6 +19,7 @@ export interface ForwardedByNavbar {
 interface NavbarProps {
   yDistanceOffset: number
   positionRef: MutableRefObject<HTMLElement>
+  getTopDistance: (_distance: number) => any
   items?: {
     label: string
     icon?: JSX.Element
@@ -25,13 +28,15 @@ interface NavbarProps {
 }
 
 const Navbar = forwardRef<any, NavbarProps>(
-  ({ items, positionRef, yDistanceOffset }, ref) => {
+  ({ items, positionRef, yDistanceOffset, getTopDistance }, ref) => {
+    const [topDistance, setTopDistance] = useState(0)
+
     const fixedNavbarRef = useRef<ForwardedByFixedNavbar>(null)
 
     const onLiClick = (ref?: MutableRefObject<HTMLElement>) => {
       if (ref) {
         const scrolledY = window.scrollY
-        const isFixed = fixedNavbarRef.current.getTopDistance() <= 0
+        const isFixed = topDistance <= 0
         const refY = ref.current?.getBoundingClientRect().top
 
         const fixedTopScroll = scrolledY + refY
@@ -45,10 +50,20 @@ const Navbar = forwardRef<any, NavbarProps>(
       }
     }
 
-    useImperativeHandle(ref, () => ({ onLiClick }))
+    useImperativeHandle(ref, () => ({
+      onLiClick
+    }))
+
+    useEffect(() => {
+      getTopDistance(topDistance)
+    }, [topDistance])
 
     return (
-      <FixedNavbar ref={fixedNavbarRef} positionRef={positionRef}>
+      <FixedNavbar
+        ref={fixedNavbarRef}
+        positionRef={positionRef}
+        getTopDistance={distance => setTopDistance(distance)}
+      >
         <Style>
           {items.map(({ label, ref, icon }, index) => (
             <li key={index} onClick={() => onLiClick(ref)}>

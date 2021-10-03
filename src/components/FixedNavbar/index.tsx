@@ -18,16 +18,16 @@ import Style from './styles'
 
 export interface ForwardedByFixedNavbar {
   setFixed: () => void
-  getTopDistance: () => number
 }
 
 interface FixedNavbarProps {
   children: ReactNode
   positionRef: MutableRefObject<HTMLElement>
+  getTopDistance?: (_distance: number) => any
 }
 
 const FixedNavbar = forwardRef<any, FixedNavbarProps>(
-  ({ positionRef, children }, ref) => {
+  ({ positionRef, children, getTopDistance }, ref) => {
     const [topDistanceFromViewport, setDistance] = useState(0)
 
     const navbarRef = useRef<HTMLElement>(null)
@@ -37,17 +37,21 @@ const FixedNavbar = forwardRef<any, FixedNavbarProps>(
         ? topDistanceFromViewport - navbarRef.current?.clientHeight
         : 0
 
-    const getTopDistance = () => topDistanceFromViewport
-
     const setFixed = () => {
       setDistance(0)
     }
 
-    useImperativeHandle(ref, () => ({ setFixed, getTopDistance }))
+    useImperativeHandle(ref, () => ({
+      setFixed
+    }))
 
     const onWindowScroll = () => {
       setDistance(positionRef.current?.getBoundingClientRect().y || 0)
     }
+
+    useEffect(() => {
+      getTopDistance(topDistanceFromViewport)
+    }, [topDistanceFromViewport])
 
     useEffect(() => {
       window.addEventListener('scroll', onWindowScroll)

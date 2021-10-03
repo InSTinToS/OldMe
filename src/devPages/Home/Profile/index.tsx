@@ -1,7 +1,7 @@
 import Style, { Avatar } from './styles'
 import { forwardRef } from 'react'
 
-import profile from 'assets/spider.jpg'
+import profile from 'assets/profile.jpg'
 
 import Perspective from 'components/Perspective'
 import Github from 'components/Github'

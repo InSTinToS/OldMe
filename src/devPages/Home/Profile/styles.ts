@@ -13,7 +13,7 @@ export const Avatar = styled(motion.img)`
 
 const Style = styled.section`
   article {
-    padding: 24px;
+    padding: 102px 24px 24px 24px;
 
     width: 100%;
     min-height: 80vh;
@@ -47,6 +47,12 @@ const Style = styled.section`
 
     svg {
       margin-right: 8px;
+    }
+  }
+
+  @media screen and (min-width: 700px) {
+    article {
+      padding: 24 px 24px 24px 24px;
     }
   }
 `
