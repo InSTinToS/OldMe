@@ -21,7 +21,7 @@ const Resume = forwardRef<any, ResumeProps>(({}, ref) => (
         por desenvolver o front-end e o design (UI/UX), estou utilizando React
         com Typescript e alguns pacotes entre eles Styled Components, React
         Router, Redux Toolkit, etc, para o UI utilizo Figma e Adobe Illustrator
-        e para versionamento Git.
+        e para versionamento Git/Github.
       </p>
 
       <p>

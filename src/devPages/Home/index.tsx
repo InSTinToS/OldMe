@@ -18,16 +18,16 @@ import SkillsIcon from 'assets/icons/skills'
 
 import Navbar, { ForwardedByNavbar } from 'components/Navbar'
 
-import { motion, useTransform, useViewportScroll } from 'framer-motion'
+import { motion, useTransform, useViewportScroll, Variant } from 'framer-motion'
 
 interface HomeProps {}
 
 const Home: NextPage<HomeProps> = () => {
   const [isFixed, setisFixed] = useState(false)
-  const sourceRef = useRef<HTMLSourceElement>(null)
 
   const aboveParallaxRef = useRef<HTMLDivElement>(null)
   const experienceRef = useRef<HTMLDivElement>(null)
+  const sourceRef = useRef<HTMLSourceElement>(null)
   const navbarRef = useRef<ForwardedByNavbar>(null)
   const resumeRef = useRef<HTMLDivElement>(null)
   const skillsRef = useRef<HTMLDivElement>(null)
@@ -37,6 +37,12 @@ const Home: NextPage<HomeProps> = () => {
 
   const aboveY = useTransform(scrollY, [0, 373], [0, -373])
   const belowY = useTransform(scrollY, [0, 300], [0, 373])
+
+  const audioAnimation: Variant = {
+    top: isFixed ? 'auto' : 24,
+    transition: { duration: 2 },
+    bottom: isFixed ? 24 : 'auto'
+  }
 
   const navbarItems = [
     { label: 'Ínicio', icon: <HomeIcon /> },
@@ -48,6 +54,11 @@ const Home: NextPage<HomeProps> = () => {
     },
     { label: 'Resumo', ref: resumeRef, icon: <ResumeIcon /> }
   ]
+
+  const getTopDistance = (distance: number) => {
+    if (distance <= 102 && !isFixed) setisFixed(true)
+    else if (distance > 102 && isFixed) setisFixed(false)
+  }
 
   useEffect(() => {
     const refs = {
@@ -72,13 +83,7 @@ const Home: NextPage<HomeProps> = () => {
         items={navbarItems}
         yDistanceOffset={373}
         positionRef={aboveParallaxRef}
-        getTopDistance={distance => {
-          if (distance <= 102 && !isFixed) {
-            setisFixed(true)
-          } else if (distance > 102 && isFixed) {
-            setisFixed(false)
-          }
-        }}
+        getTopDistance={getTopDistance}
       />
 
       <motion.div id='below' style={{ y: belowY }}>
@@ -100,11 +105,7 @@ const Home: NextPage<HomeProps> = () => {
         controls
         autoPlay
         id='audio-element'
-        animate={{
-          top: isFixed ? 'auto' : 24,
-          transition: { duration: 2 },
-          bottom: isFixed ? 24 : 'auto'
-        }}
+        animate={audioAnimation}
       >
         <source ref={sourceRef} src='audios/beat.mp3' type='audio/mp3' />
         Your browser does not support the audio tag.
